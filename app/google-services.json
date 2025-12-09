@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "438206406738",
+    "project_id": "covid-19-social-distance-route",
+    "storage_bucket": "covid-19-social-distance-route.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438206406738:android:d274df48adef9c34e53f8b",
+        "android_client_info": {
+          "package_name": "com.covid_19_social_distance_routes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwZv7GGSSltBx0tzPKDa4i99NFzjipWBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
