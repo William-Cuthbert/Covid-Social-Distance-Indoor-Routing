@@ -12,6 +12,7 @@ import com.covid_19_social_distance_routes.ui.BranchListScreen
 import com.covid_19_social_distance_routes.ui.FloorListScreen
 import com.covid_19_social_distance_routes.ui.FloorPlanScreen
 import com.covid_19_social_distance_routes.ui.LoginScreen
+import com.covid_19_social_distance_routes.ui.admin.AdminDashboardScreen
 import com.covid_19_social_distance_routes.viewmodel.AuthViewModel
 import com.covid_19_social_distance_routes.viewmodel.BranchViewModel
 
@@ -29,7 +30,7 @@ fun AppNavHost(
             LoginScreen(navController, authViewModel)
         }
         composable("admin_dashboard") {
-            throw RuntimeException("Not implemented yet!")
+            AdminDashboardScreen(navController, viewModel = branchViewModel)
         }
         composable("branches") {
             BranchListScreen(navController, viewModel = branchViewModel)

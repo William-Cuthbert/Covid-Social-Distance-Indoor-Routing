@@ -21,7 +21,7 @@ class BranchViewModel : ViewModel() {
                 floors = listOf(
                     Floor(
                         id = "LDN-GF",
-                        name = "ground",
+                        level = 0,
                         nodes = listOf(
                             Node("A", 50, 100, NodeType.TABLE),
                             Node("B", 200, 150, NodeType.ENTRANCE)
@@ -29,7 +29,7 @@ class BranchViewModel : ViewModel() {
                     ),
                     Floor(
                         id = "F1",
-                        name = "ground",
+                        level = 1,
                         nodes = listOf(
                             Node("A", 50, 100, NodeType.TABLE),
                             Node("B", 200, 150, NodeType.ENTRANCE)
@@ -44,7 +44,7 @@ class BranchViewModel : ViewModel() {
                 floors = listOf(
                     Floor(
                         id = "GLA-GF",
-                        name = "ground",
+                        level = 0,
                         nodes = listOf(
                             Node("A", 150, 20, NodeType.TABLE),
                             Node("B", 20, 150, NodeType.ENTRANCE)
@@ -52,7 +52,7 @@ class BranchViewModel : ViewModel() {
                     ),
                     Floor(
                         id = "GLA-F1",
-                        name = "ground",
+                        level = 1,
                         nodes = listOf(
                             Node("A", 150, 20, NodeType.TABLE),
                             Node("B", 20, 150, NodeType.ENTRANCE)
