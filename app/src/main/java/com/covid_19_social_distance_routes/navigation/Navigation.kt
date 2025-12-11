@@ -8,11 +8,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-import com.covid_19_social_distance_routes.ui.BranchListScreen
-import com.covid_19_social_distance_routes.ui.FloorListScreen
-import com.covid_19_social_distance_routes.ui.FloorPlanScreen
-import com.covid_19_social_distance_routes.ui.LoginScreen
-import com.covid_19_social_distance_routes.ui.SignUpScreen
+import com.covid_19_social_distance_routes.ui.user.BranchListScreen
+import com.covid_19_social_distance_routes.ui.user.FloorListScreen
+import com.covid_19_social_distance_routes.ui.user.FloorPlanScreen
+import com.covid_19_social_distance_routes.ui.login.ForgotPasswordScreen
+import com.covid_19_social_distance_routes.ui.login.LoginScreen
+import com.covid_19_social_distance_routes.ui.login.SignUpScreen
+import com.covid_19_social_distance_routes.ui.login.UpdatePasswordScreen
 import com.covid_19_social_distance_routes.ui.admin.AdminDashboardScreen
 
 import com.covid_19_social_distance_routes.viewmodel.AuthViewModel
@@ -26,6 +28,8 @@ fun AppNavHost(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") { LoginScreen(navController, authViewModel) }
+        composable("forgot_password") { ForgotPasswordScreen(navController, authViewModel) }
+        composable("update_password") { UpdatePasswordScreen(navController, authViewModel) }
         composable("signup") { SignUpScreen(navController, authViewModel) }
         composable("admin_dashboard") { AdminDashboardScreen(navController, viewModel = branchViewModel) }
         composable("branches") { BranchListScreen(navController, viewModel = branchViewModel) }

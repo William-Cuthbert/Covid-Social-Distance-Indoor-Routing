@@ -52,6 +52,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    implementation(libs.ads.mobile.sdk)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

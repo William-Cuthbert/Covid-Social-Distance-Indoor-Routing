@@ -1,27 +1,25 @@
-package com.covid_19_social_distance_routes.ui
+package com.covid_19_social_distance_routes.ui.login
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.text.KeyboardOptions
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -94,32 +92,21 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             Text("Login")
         }
 
-        Button(onClick = { navController.navigate("signup") }) {
-            Text("Sign Up")
+        TextButton(
+            onClick = { navController.navigate("forgot_password") },
+            modifier = Modifier.fillMaxWidth()) {
+            Text("Forgot Password?")
+        }
+
+        TextButton(
+            onClick = { navController.navigate("signup") },
+            modifier = Modifier.fillMaxWidth()) {
+            Text("Don't have an account? Sign Up")
         }
 
         authViewModel.error?.let {
             Spacer(Modifier.height(12.dp))
             Text(it, color = MaterialTheme.colorScheme.error)
         }
-
-//        Text("Developer Shortcuts:", style = MaterialTheme.typography.titleMedium)
-//        Spacer(Modifier.height(12.dp))
-//
-//        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-//            Button(onClick = {
-//                authViewModel.loginAsUser()
-//                navController.navigate("branches")
-//            }) {
-//                Text("Mock User")
-//            }
-//
-//            Button(onClick = {
-//                authViewModel.loginAsAdmin()
-//                navController.navigate("admin_dashboard")
-//            }) {
-//                Text("Mock Admin")
-//            }
-//        }
     }
 }

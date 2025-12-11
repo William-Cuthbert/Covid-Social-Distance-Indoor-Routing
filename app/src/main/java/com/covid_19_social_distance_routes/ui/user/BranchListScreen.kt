@@ -1,4 +1,4 @@
-package com.covid_19_social_distance_routes.ui
+package com.covid_19_social_distance_routes.ui.user
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

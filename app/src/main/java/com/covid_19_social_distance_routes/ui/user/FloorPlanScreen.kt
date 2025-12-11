@@ -1,5 +1,6 @@
-package com.covid_19_social_distance_routes.ui
+package com.covid_19_social_distance_routes.ui.user
 
+import android.graphics.Paint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
@@ -79,7 +81,7 @@ private fun DrawScope.drawEntrance() {
     drawRect(
         color = Color(0xFFA5D6A7),
         topLeft = Offset(40f, size.height - 150f),
-        size = androidx.compose.ui.geometry.Size(200f, 120f)
+        size = Size(200f, 120f)
     )
 }
 
@@ -87,7 +89,7 @@ private fun DrawScope.drawBar() {
     drawRect(
         color = Color(0xFFFFCC80),
         topLeft = Offset(size.width - 300f, 40f),
-        size = androidx.compose.ui.geometry.Size(260f, 200f)
+        size = Size(260f, 200f)
     )
 }
 
@@ -95,7 +97,7 @@ private fun DrawScope.drawWC() {
     drawRect(
         color = Color(0xFF90CAF9),
         topLeft = Offset(40f, 40f),
-        size = androidx.compose.ui.geometry.Size(200f, 140f)
+        size = Size(200f, 140f)
     )
 }
 
@@ -103,7 +105,7 @@ private fun DrawScope.drawStairs() {
     drawRect(
         color = Color(0xFFCE93D8),
         topLeft = Offset(size.width - 250f, size.height - 250f),
-        size = androidx.compose.ui.geometry.Size(200f, 200f)
+        size = Size(200f, 200f)
     )
 }
 
@@ -138,7 +140,7 @@ private fun DrawScope.drawNode(node: Node) {
             node.id,
             node.x.toFloat() + 20f,
             node.y.toFloat() - 20f,
-            android.graphics.Paint().apply {
+            Paint().apply {
                 color = android.graphics.Color.BLACK
                 textSize = 35f
             }
