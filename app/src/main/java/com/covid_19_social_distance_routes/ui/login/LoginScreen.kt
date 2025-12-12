@@ -34,6 +34,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 import androidx.navigation.NavController
+import com.covid_19_social_distance_routes.utility.validateEmail
+import com.covid_19_social_distance_routes.utility.validatePassword
 
 import com.covid_19_social_distance_routes.viewmodel.AuthViewModel
 
@@ -44,23 +46,38 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
     var password by remember { mutableStateOf("") }
     var showPassword by remember { mutableStateOf(false) }
 
+    var emailError by remember { mutableStateOf<String?>(null) }
+    var passwordError by remember { mutableStateOf<String?>(null) }
+
     Column(Modifier.fillMaxSize().statusBarsPadding().padding(24.dp)) {
         Text("Login", style = MaterialTheme.typography.headlineLarge)
         Spacer(Modifier.height(24.dp))
 
         OutlinedTextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = {
+                email = it
+                emailError = validateEmail(it)
+            },
             label = { Text("Email") },
+            isError = emailError != null,
             modifier = Modifier.fillMaxWidth()
         )
+
+        if (emailError != null) {
+            Text(emailError!!, color = MaterialTheme.colorScheme.error)
+        }
 
         Spacer(Modifier.height(16.dp))
 
         OutlinedTextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = {
+                password = it
+                passwordError = validatePassword(it)
+            },
             label = { Text("Password") },
+            isError = passwordError != null,
             singleLine = true,
             visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
@@ -75,15 +92,24 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             modifier = Modifier.fillMaxWidth()
         )
 
+        if (passwordError != null) {
+            Text(passwordError!!, color = MaterialTheme.colorScheme.error)
+        }
+
         Spacer(Modifier.height(32.dp))
 
         Button(
             onClick = {
-                authViewModel.login(email, password) {
-                    if (authViewModel.userRole == "admin") {
-                        navController.navigate("admin_dashboard")
-                    } else {
-                        navController.navigate("branches")
+                val emailValidated = validateEmail(email)
+                val passwordValidated = validatePassword(password)
+
+                if (emailValidated == null && passwordValidated == null) {
+                    authViewModel.login(email, password) {
+                        if (authViewModel.userRole == "admin") {
+                            navController.navigate("admin_dashboard")
+                        } else {
+                            navController.navigate("branches")
+                        }
                     }
                 }
             },

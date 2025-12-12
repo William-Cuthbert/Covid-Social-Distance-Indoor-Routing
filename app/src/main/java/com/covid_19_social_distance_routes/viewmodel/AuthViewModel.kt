@@ -3,9 +3,12 @@ package com.covid_19_social_distance_routes.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.EmailAuthProvider
 
+import androidx.lifecycle.ViewModel
+
+import com.covid_19_social_distance_routes.mapper.FirebaseAuthErrorMapper
+
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,14 +28,16 @@ class AuthViewModel : ViewModel() {
 
     fun login(email: String, password: String, onSuccess: () -> Unit) {
         isLoading = true
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { result ->
-            isLoading = false
-            if (result.isSuccessful) {
-                loadUserRole(onSuccess)
-            } else {
-                error = result.exception?.message
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                isLoading = false
+                if (task.isSuccessful) {
+                    error = null
+                    loadUserRole(onSuccess)
+                } else {
+                    error = FirebaseAuthErrorMapper.map(task.exception)
+                }
             }
-        }
     }
 
     fun signUp(email: String, password: String, name: String, onComplete: (Boolean) -> Unit) {
