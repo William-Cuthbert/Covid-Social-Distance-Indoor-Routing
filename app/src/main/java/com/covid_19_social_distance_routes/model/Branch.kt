@@ -6,5 +6,6 @@ data class Branch(
     val location: String,
     val latitude: Double,
     val longitude: Double,
+    val distanceMeters: Float? = null,
     val floors: List<Floor>
 )

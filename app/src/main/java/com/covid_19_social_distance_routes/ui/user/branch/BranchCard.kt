@@ -34,6 +34,13 @@ fun BranchCard(branch: Branch, onClick: (String) -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            branch.distanceMeters?.let {
+                Text(
+                    text = String.format("%.1f km away", it / 1000f),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

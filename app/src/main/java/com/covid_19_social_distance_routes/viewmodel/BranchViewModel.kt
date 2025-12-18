@@ -39,16 +39,19 @@ class BranchViewModel(
 
                     val branches = repository.getBranches()
 
-                    val sorted = branches.sortedBy {
-                        distanceBetween(
+                    val updated = branches.map { branch ->
+                        val results = FloatArray(1)
+                        Location.distanceBetween(
                             userLat,
                             userLon,
-                            it.latitude,
-                            it.longitude
+                            branch.latitude,
+                            branch.longitude,
+                            results
                         )
-                    }
+                        branch.copy(distanceMeters = results[0])
+                    }.sortedBy { it.distanceMeters }
 
-                    _uiState.value = BranchUiState.Success(sorted)
+                    _uiState.value = BranchUiState.Success(updated)
                 }
                 .addOnFailureListener {
                     _uiState.value =
@@ -59,18 +62,5 @@ class BranchViewModel(
             _uiState.value =
                 BranchUiState.Error("Unexpected error")
         }
-    }
-
-    private fun distanceBetween(
-        lat1: Double,
-        lon1: Double,
-        lat2: Double,
-        lon2: Double
-    ): Float {
-        val results = FloatArray(1)
-        Location.distanceBetween(
-            lat1, lon1, lat2, lon2, results
-        )
-        return results[0]
     }
 }
