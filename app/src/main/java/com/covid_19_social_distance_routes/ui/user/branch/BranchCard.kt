@@ -20,12 +20,15 @@ fun BranchCard(branch: Branch, onClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(vertical = 6.dp)
             .clickable { onClick(branch.id) },
-        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = branch.name, style = MaterialTheme.typography.titleMedium)
-            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = branch.name,
+                style = MaterialTheme.typography.titleMedium
+            )
             Text(
                 text = branch.location,
                 style = MaterialTheme.typography.bodyMedium,

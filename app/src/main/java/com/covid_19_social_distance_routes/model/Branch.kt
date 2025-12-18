@@ -4,5 +4,7 @@ data class Branch(
     val id: String,
     val name: String,
     val location: String,
+    val latitude: Double,
+    val longitude: Double,
     val floors: List<Floor>
 )

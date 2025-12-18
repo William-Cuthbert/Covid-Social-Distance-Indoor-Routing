@@ -28,39 +28,39 @@ fun FloorPlanScreen(
     floorId: String,
     viewModel: BranchViewModel
 ) {
-    val place = viewModel.branches.find { it.id == branchId }
-    val floor = place?.floors?.find { it.id == floorId }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        if (floor == null) {
-            Text("Floor not found", style = MaterialTheme.typography.titleLarge)
-            return@Box
-        }
-        floor.nodes.forEach { node ->
-            Box(
-                modifier = Modifier
-                    .offset(x = node.x.dp, y = node.y.dp)
-                    .size(40.dp)
-                    .background(
-                        color = when (node.type) {
-                            NodeType.TABLE -> Color.Blue
-                            NodeType.ENTRANCE -> Color.Green
-                            NodeType.WC -> Color.Red
-                            NodeType.BAR -> Color.Yellow
-                            NodeType.STAIRS -> Color.Magenta
-                            NodeType.NAVIGATING -> Color.Cyan
-                        },
-                        shape = CircleShape
-                    )
-                    .clickable {
-                        println("Clicked node ${node.id}")
-                    }
-            )
-        }
-    }
+//    val place = viewModel.branches.find { it.id == branchId }
+//    val floor = place?.floors?.find { it.id == floorId }
+//    Box(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .padding(16.dp)
+//    ) {
+//        if (floor == null) {
+//            Text("Floor not found", style = MaterialTheme.typography.titleLarge)
+//            return@Box
+//        }
+//        floor.nodes.forEach { node ->
+//            Box(
+//                modifier = Modifier
+//                    .offset(x = node.x.dp, y = node.y.dp)
+//                    .size(40.dp)
+//                    .background(
+//                        color = when (node.type) {
+//                            NodeType.TABLE -> Color.Blue
+//                            NodeType.ENTRANCE -> Color.Green
+//                            NodeType.WC -> Color.Red
+//                            NodeType.BAR -> Color.Yellow
+//                            NodeType.STAIRS -> Color.Magenta
+//                            NodeType.NAVIGATING -> Color.Cyan
+//                        },
+//                        shape = CircleShape
+//                    )
+//                    .clickable {
+//                        println("Clicked node ${node.id}")
+//                    }
+//            )
+//        }
+//    }
 }
 
 private fun DrawScope.drawWalls() {

@@ -53,6 +53,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.1")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
     implementation(libs.ads.mobile.sdk)
+    implementation(libs.play.services.location)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -63,20 +64,3 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
-
-//
-//android {
-//    namespace = "com.covid_19_social_distance_routes"
-//    compileSdk = 36
-//
-//    defaultConfig {
-//        applicationId = "com.covid_19_social_distance_routes"
-//        minSdk = 24
-//        targetSdk = 36
-//        versionCode = 1
-//        versionName = "1.0"
-//    }
-//
-//    buildFeatures { compose = true }
-//    composeOptions { kotlinCompilerExtensionVersion = "1.5.4" }
-//}

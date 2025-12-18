@@ -27,25 +27,25 @@ fun FloorListScreen(
     branchId: String,
     viewModel: BranchViewModel
 ) {
-    val branch = viewModel.branches.find { it.id == branchId }
-    val floors = branch?.floors
-
-    Column(Modifier.fillMaxSize().statusBarsPadding().padding(16.dp)) {
-        Text("Floors in ${branch?.location}", style = MaterialTheme.typography.titleLarge)
-
-        floors?.forEach { floor ->
-            Card(
-                Modifier.fillMaxWidth().padding(vertical = 6.dp).clickable {
-                    navController.navigate("floor_plan/${branch.id}/${floor.id}")
-                },
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text(getFloorLevel(floor.level))
-                }
-            }
-        }
-    }
+//    val branch = viewModel.branches.find { it.id == branchId }
+//    val floors = branch?.floors
+//
+//    Column(Modifier.fillMaxSize().statusBarsPadding().padding(16.dp)) {
+//        Text("Floors in ${branch?.location}", style = MaterialTheme.typography.titleLarge)
+//
+//        floors?.forEach { floor ->
+//            Card(
+//                Modifier.fillMaxWidth().padding(vertical = 6.dp).clickable {
+//                    navController.navigate("floor_plan/${branch.id}/${floor.id}")
+//                },
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+//            ) {
+//                Column(modifier = Modifier.padding(12.dp)) {
+//                    Text(getFloorLevel(floor.level))
+//                }
+//            }
+//        }
+//    }
 }
 
 fun getFloorLevel(num: Int): String {

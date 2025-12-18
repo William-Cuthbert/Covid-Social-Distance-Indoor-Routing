@@ -5,7 +5,12 @@ import androidx.compose.runtime.getValue
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 
 import androidx.compose.foundation.layout.*
@@ -111,3 +116,30 @@ fun AnimatedOutlinedTextField(
     }
 }
 
+@Composable
+fun AnimatedLoadingText(
+    modifier: Modifier = Modifier,
+    text: String
+) {
+    val transition = rememberInfiniteTransition(label = "loading")
+
+    val alpha by transition.animateFloat(
+        initialValue = 0.4f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 900,
+                easing = LinearEasing
+            ),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "alpha"
+    )
+
+    Text(
+        text = "$text...",
+        modifier = modifier,
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha)
+    )
+}
